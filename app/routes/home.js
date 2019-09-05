@@ -3,8 +3,9 @@ module.exports = function(app) {
     app.get('/', function(req,res) {
 
         var connection = app.config.db;
+        var homeModel = app.models.home;
 
-        connection.query('SELECT * FROM news', function(err, result) {
+        homeModel.getAll(connection, function(err, result) {
             res.render('category/home', { news: result });
         });
     });
