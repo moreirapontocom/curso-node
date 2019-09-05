@@ -1,19 +1,13 @@
+var db = require('../../config/db');
+
 module.exports = function(app) {
 
     app.get('/', function(req,res) {
 
-        var mysql = require('mysql');
-
-        var connection = mysql.createConnection({
-            host: 'node_mysql',
-            user: 'root',
-            password: 'root',
-            database: 'curso_node'
-        });
+        var connection = db();
 
         connection.query('SELECT * FROM news', function(err, result) {
-            // res.render('category/home');
-            res.send(result);
+            res.render('category/home', { news: result });
         });
     });
 
