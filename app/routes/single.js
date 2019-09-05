@@ -4,8 +4,10 @@ module.exports = function(app) {
 
         var connection = app.config.db;
         var singleModel = new app.models.single(connection);
-        
-        singleModel.getSingle(function(err, result) {
+
+        var id = req.query;
+
+        singleModel.getSingle(id, function(err, result) {
             res.render('category/single', { item: result });
         });
         
