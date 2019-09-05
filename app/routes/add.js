@@ -6,7 +6,13 @@ module.exports = function(app) {
 
     app.post('/save', function(req, res) {
         var formData = req.body;
-        res.send(formData);
+
+        var connection = app.config.db;
+        var addModel = app.models.add;
+
+        addModel.save(connection, formData, function(err, result) {
+            res.redirect('/');
+        });
     });
 
 }
