@@ -1,21 +1,23 @@
 module.exports = function(app) {
 
     app.get('/add', function(req, res) {
-        res.render('category/add');
+        res.render('category/add', { errors: '' });
     });
 
     app.post('/save', function(req, res) {
         var formData = req.body;
 
-        req.assert('title', 'Title is required').notEmpty().len(10,255);
+        req.assert('title', 'Title is required').notEmpty()
+        req.assert('title', 'Title length is 10,255').len(10,255);
         req.assert('content', 'Content is required').notEmpty();
-        req.assert('excerpt', 'Excerpt is required').notEmpty().len(4,255);
-        req.assert('author', 'Author is required').notEmpty().len(4,100);
+        req.assert('excerpt', 'Excerpt is required').notEmpty();
+        req.assert('author', 'Author is required').notEmpty();
         req.assert('news_at', 'Date news is required').notEmpty().isDate({ format: 'YYYY-MM-DD' });
 
         var errors = req.validationErrors();
+        console.log(errors);
         if (errors) {
-            res.render('category/add');
+            res.render('category/add', { errors: errors });
             return;
         }
 
