@@ -12,27 +12,27 @@
 
     <form action="/save" method="POST">
         <label>Title</label><br>
-        <input type="text" name="title">
+        <input type="text" name="title" value="<%= item.title %>">
 
         <br><br>
 
         <label>Content</label><br>
-        <textarea name="content" cols="30" rows="5"></textarea>
+        <textarea name="content" cols="30" rows="5"><%= item.content %></textarea>
 
         <br><br>
 
         <label>Excerpt</label><br>
-        <textarea name="excerpt" cols="30" rows="5"></textarea>
+        <textarea name="excerpt" cols="30" rows="5"><%= item.excerpt %></textarea>
 
         <br><br>
 
         <label>Author name</label><br>
-        <input type="text" name="author">
+        <input type="text" name="author" value="<%= item.author %>">
 
         <br><br>
 
         <label>Date news</label><br>
-        <input type="date" name="news_at">
+        <input type="date" name="news_at" value="<%= item.news_at %>">
 
         <br><br>
 

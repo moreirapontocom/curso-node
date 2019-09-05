@@ -1,7 +1,7 @@
 module.exports = function(app) {
 
     app.get('/add', function(req, res) {
-        res.render('category/add', { errors: '' });
+        res.render('category/add', { errors: {}, item: {} });
     });
 
     app.post('/save', function(req, res) {
@@ -15,9 +15,8 @@ module.exports = function(app) {
         req.assert('news_at', 'Date news is required').notEmpty().isDate({ format: 'YYYY-MM-DD' });
 
         var errors = req.validationErrors();
-        console.log(errors);
         if (errors) {
-            res.render('category/add', { errors: errors });
+            res.render('category/add', { errors: errors, item: formData });
             return;
         }
 
