@@ -1,25 +1,11 @@
-var express = require('express');
-var app = express();
+var app = require('./config/server');
 
-var msg = require('./msg');
-var msgfunc = require('./msgfunc');
+var route_home = require('./app/routes/home');
+route_home(app)
 
-app.set('view engine', 'ejs');
-
-app.get('/tecnologia', function(req,res) {
-    res.render('category/tecnologia');
-});
-
-app.get('/moda', function(req,res) {
-    res.render('category/moda');
-});
-
-app.get('/', function(req,res) {
-    res.render('category/home');
-});
+var route_moda = require('./app/routes/moda')(app);
+var route_tecnologia = require('./app/routes/tecnologia')(app);
 
 app.listen(4200, function() {
     console.log('Server is running...');
-    console.log(msg);
-    console.log(msgfunc());
 });
