@@ -8,9 +8,9 @@ module.exports = function(app) {
         var formData = req.body;
 
         var connection = app.config.db;
-        var addModel = app.models.add;
+        var addModel = new app.models.add(connection);
 
-        addModel.save(connection, formData, function(err, result) {
+        addModel.save(formData, function(err, result) {
             res.redirect('/');
         });
     });

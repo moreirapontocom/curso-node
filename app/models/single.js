@@ -1,9 +1,11 @@
+function Single(connection) {
+    this._connection = connection;
+}
+
+Single.prototype.getSingle = function(callback) {
+    this._connection.query('SELECT * FROM news WHERE id = 1', callback);
+}
+
 module.exports = function() {
-
-    this.getSingle = function(connection, callback) {
-        connection.query('SELECT * FROM news WHERE id = 1', callback);
-    }
-
-    return this;
-
+    return Single;
 }
