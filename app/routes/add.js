@@ -4,4 +4,9 @@ module.exports = function(app) {
         res.render('category/add');
     });
 
+    app.post('/save', function(req, res) {
+        var formData = req.body;
+        res.send(formData);
+    });
+
 }

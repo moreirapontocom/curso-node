@@ -9,11 +9,15 @@
 <body>
     <h1>Índice de Noticias</h1>
 
+    <a href="http://0.0.0.0:4200/add">Add News</a>
+
+    <br><br><br>
+
     <% for (var i=0;i < news.length; i++) { %>
 
-        <%= news[i].id %> &mdash; <strong><%= news[i].title %></strong>
-
-        <hr>
+        <p>
+            <%= news[i].id %> &mdash; <a href="http://0.0.0.0:4200/single"><strong><%= news[i].title %></strong></a>
+        </p>
 
     <% } %>
 
